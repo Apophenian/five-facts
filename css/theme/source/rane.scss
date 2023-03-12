@@ -1,0 +1,121 @@
+/**
+ * Black theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #111;
+
+$mainFont: 'Open Sans', sans-serif;
+$linkColor: #e7ad52;
+$linkColorHover: lighten( $linkColor, 20% );
+$headingFont: 'Montserrat', Impact, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: -0.03em;
+$headingTextTransform: none;
+$selectionBackgroundColor: #e7ad52;
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color(#222);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.anim-gradient-1 {
+    background-size: 300% 300%;
+    animation: bgAnimatedBackground1 15s infinite linear;
+}
+
+h5 {
+    font-size: 30px;
+}
+
+h6 {
+    font-size: 26px;
+}
+
+h6.smaller {
+    font-size: 18px;
+}
+
+.reveal .slides section .fragment.fragment.fall-off {
+    visibility: visible;
+    opacity: 1;
+    display: inline-block;
+}
+
+.fragment.fall-off {
+    
+    transform-origin: left bottom;
+}
+
+.fragment.fall-off.visible {
+    transition: transform ease-in 0.3s;
+    animation: fallOff 1.5s;
+}
+
+@keyframes fallOff {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(190deg);
+    }
+
+    60% {
+        transform: rotate(160deg)
+    }
+
+    100% {
+        transform: translateY(2000px)
+    }
+}
+
+.no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+.no-margin {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
+}
+
+@keyframes bgAnimatedBackground1 {
+    0% {
+        background-position: 0 85%;
+    }
+    50% {
+        background-position: 100% 20%;
+    }
+    100% {
+        background-position: 0 85%;
+    }
+}
+
+section {
+    &[data-transition*="none-out"] {
+        &.present, &.past {
+            transition-duration: 0s !important;
+        }
+    }
+    &[data-transition*="none-in"] {
+	&.future, &.present {
+	    transition-duration: 0s !important;
+	}
+    }
+}
