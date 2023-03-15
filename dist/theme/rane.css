@@ -385,7 +385,7 @@ h6.smaller {
 
 .fragment.fall-off.visible {
   transition: transform ease-in 0.3s;
-  animation: fallOff 1.5s;
+  animation: fallOff 5s;
 }
 
 @keyframes fallOff {
